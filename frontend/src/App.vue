@@ -71,7 +71,7 @@ const login = () => {
 const startGame = async () => {
   loading.value = true
   try {
-    const res = await fetch('http://127.0.0.1:8000/quiz')
+    const res = await fetch('https://nodalview-api.onrender.com/quiz')
     questions.value = await res.json()
     // Reset state
     currentQuestionIndex.value = 0
@@ -133,7 +133,7 @@ const nextQuestion = () => {
 // 4. FIN DE PARTIE
 const endGame = async () => {
   loading.value = true
-  await fetch('http://127.0.0.1:8000/submit-score', {
+  await fetch('https://nodalview-api.onrender.com/submit-score', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -151,7 +151,7 @@ const endGame = async () => {
 // 5. VOIR LE CLASSEMENT
 const fetchLeaderboard = async () => {
   loading.value = true
-  const res = await fetch('http://127.0.0.1:8000/leaderboard')
+  const res = await fetch('https://nodalview-api.onrender.com/leaderboard')
   leaderboard.value = await res.json()
   loading.value = false
   screen.value = 'leaderboard'
@@ -160,7 +160,7 @@ const fetchLeaderboard = async () => {
 const fetchLessons = async () => {
   loading.value = true
   try {
-    const res = await fetch('http://127.0.0.1:8000/lessons')
+    const res = await fetch('https://nodalview-api.onrender.com/lessons')
     lessons.value = await res.json()
     activeLessonId.value = 1 // Reset au premier
     loading.value = false
